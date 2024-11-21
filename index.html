@@ -10,6 +10,34 @@
 </head>
 
 <body>
+    <!-- Add Event Section -->
+    <div class="container mt-5" id="addEvent" style="display: block">
+        <h2 class="text-center">Add New Event</h2>
+        <form id="eventForm">
+            <div class="mb-3">
+                <label for="eventDate" class="form-label">Date</label>
+                <input type="date" class="form-control" id="eventDate" required>
+            </div>
+            <div class="mb-3">
+                <label for="eventTime" class="form-label">Time</label>
+                <input type="time" class="form-control" id="eventTime" required>
+            </div>
+            <div class="mb-3">
+                <label for="eventSport" class="form-label">Sport</label>
+                <input type="text" class="form-control" id="eventSport" required>
+            </div>
+            <div class="mb-3">
+                <label for="eventTeams" class="form-label">Teams/Participants</label>
+                <input type="text" class="form-control" id="eventTeams" required>
+            </div>
+            <button type="submit" class="btn btn-primary" id="addEventButton">Add Event</button>
+        </form>
+        <!-- Feedback message -->
+        <div id="feedback" style="display: none; margin-top: 10px; color: green; text-align: center;">
+            Event successfully added!
+        </div>
+    </div>
+
     <!-- Bootstrap JS and Custom JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

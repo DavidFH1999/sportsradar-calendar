@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#addEvent {
+    margin-top: 40px;
+}
+
+#eventForm {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
