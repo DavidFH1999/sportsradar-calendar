@@ -1,9 +1,16 @@
+/* #region Global styles */
 body {
     font-family: Arial, sans-serif;
 }
+/* #endregion Reset styles */
+
+/* #region ID selectors */
+#calendar {
+    display: none;
+}
 
 #addEvent {
-    margin-top: 40px;
+    display: block;
 }
 
 #eventForm {
@@ -11,6 +18,26 @@ body {
     max-width: 800px;
 }
 
+#feedback {
+    margin-top: 10px;
+    color: green;
+    text-align: center;
+    display: none;
+}
+/* #endregion ID selectors */
+
+/* #region Class selectors */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.nav-link, .logo-link {
+    cursor: pointer;
+  }
+/* #endregion Class selectors */
+
+/* #region Element selectors */
 h2 {
     margin-bottom: 20px;
 }
+/* #endregion Element selectors */
