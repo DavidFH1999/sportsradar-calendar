@@ -2,20 +2,25 @@
 body {
     font-family: Arial, sans-serif;
 }
+
 /* #endregion Reset styles */
 
 /* #region ID selectors */
 #calendar {
-    display: none;
+    display: block;
 }
 
 #addEvent {
-    display: block;
+    display: none;
 }
 
 #eventForm {
     margin: 0 auto;
     max-width: 800px;
+}
+
+#events {
+    display: none;
 }
 
 #feedback {
@@ -24,20 +29,60 @@ body {
     text-align: center;
     display: none;
 }
+
 /* #endregion ID selectors */
 
 /* #region Class selectors */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.calendar-grid div {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.calendar-grid div.event-day {
+    background-color: #e7f3fe;
+    border: 1px solid #007bff;
+}
+
+.day {
+    cursor: pointer;
+    position: relative;
+    padding: 10px;
+}
+
+.day:hover {
+    background-color: #f0f0f0;
+}
+
+.event-marker {
+    color: red;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
 .navbar {
     margin-bottom: 20px;
 }
 
-.nav-link, .logo-link {
+.nav-link,
+.logo-link {
     cursor: pointer;
-  }
+}
+
 /* #endregion Class selectors */
 
 /* #region Element selectors */
 h2 {
     margin-bottom: 20px;
 }
+
 /* #endregion Element selectors */
