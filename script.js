@@ -1,10 +1,13 @@
 //#region Event Listener
 document.addEventListener('DOMContentLoaded', () => {
+    //initializeEvents();
+    generateCalendar();
     const addEventButton = document.getElementById('addEventButton');
     const logo = document.querySelector('.logo-link');
     const calendarLink = document.querySelector('.calendar-link');
     const addEventLink = document.querySelector('.add-event-link');
-    generateCalendar();
+    const filterButton = document.getElementById('filter-button');
+    const resetButton = document.getElementById('reset-button');
 
     // Event listener for the logo
     logo.addEventListener('click', function () {
@@ -35,6 +38,29 @@ document.addEventListener('DOMContentLoaded', () => {
             addEvent();
         }
     });
+
+    filterButton.addEventListener('click', () => {
+        const sportFilter = document.getElementById('sport-filter').value;
+        const startDate = document.getElementById('start-date').value;
+        const endDate = document.getElementById('end-date').value;
+
+        // Check if any field is empty
+        if (!sportFilter || !startDate || !endDate) {
+            alert("Please fill in all filters!");
+        } else if (startDate > endDate) {
+            alert("Start date must be before end date!");
+        } else {
+            alert("Filter applied!");
+        }
+    })
+
+    resetButton.addEventListener('click', () => {
+        document.getElementById('sport-filter').value = 'all';
+        document.getElementById('start-date').value = '';
+        document.getElementById('end-date').value = '';
+        
+        alert("Filters reset!");
+    })
 });
 //#endregion Event Listener
 
@@ -43,6 +69,12 @@ function showSection(sectionId) {
     document.getElementById('calendar').style.display = 'none';
     document.getElementById('addEvent').style.display = 'none';
     document.getElementById('events').style.display = 'none';
+    document.getElementById('filter-container').classList.remove('d-flex');
+    document.getElementById('filter-container').style.display = 'none';
+    if (sectionId === 'calendar') {
+        document.getElementById('filter-container').classList.add('d-lg-flex');
+        document.getElementById('filter-container').style.display = 'block';
+    }
     document.getElementById(sectionId).style.display = 'block';
 
     // Close the navigation bar on smaller devices
@@ -107,6 +139,8 @@ function generateCalendar() {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    document.querySelector('#calendar-header').textContent = `Event Calendar - ${monthNames[new Date().getMonth()]}`;
 
     // Get the number of days in the current month
     const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -178,3 +212,31 @@ function displayEvents(dayEvents, day) {
     }
 }
 //#endregion Display Events
+
+//#region Initialize Events
+async function initializeEvents() {
+    // Check if 'events' already exist in local storage
+    if (localStorage.getItem('events')) {
+        console.log('Events already exist in local storage. Initialization skipped.');
+        return;
+    }
+
+    try {
+        // Fetch data from events.json
+        const response = await fetch('events.json');
+        if (!response.ok) {
+            throw new Error('Failed to fetch events.json');
+        }
+
+        // Parse the JSON data
+        const events = await response.json();
+
+        // Save the data to local storage
+        localStorage.setItem('events', JSON.stringify(events));
+
+        console.log('Events successfully loaded into local storage.');
+    } catch (error) {
+        console.error('Error initializing events:', error);
+    }
+}
+//#endregion Initialize Events

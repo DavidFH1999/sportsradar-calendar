@@ -35,9 +35,34 @@
     </nav>
     <!-- #endregion Navigation Bar -->
 
+    <!-- #region Filter Container -->
+    <div id="filter-container" class="d-lg-flex flex-lg-row flex-column gap-3 align-items-center p-3 border rounded">
+        <div class="w-100 mb-3">
+            <label for="sport-filter" class="form-label">Sport:</label>
+            <select id="sport-filter" class="form-select" required>
+                <option value="all">All Sports</option>
+            </select>
+        </div>
+        <div class="w-100 mb-3">
+            <label for="start-date" class="form-label">Start Date:</label>
+            <input type="date" id="start-date" class="form-control" required>
+        </div>
+        <div class="w-100 mb-3">
+            <label for="end-date" class="form-label">End Date:</label>
+            <input type="date" id="end-date" class="form-control" required>
+        </div>
+        <div class="d-lg-flex w-100 justify-content-lg-start flex-column align-items-center gap-2">
+            <div class="d-flex justify-content-center gap-2">
+                <button id="filter-button" class="btn btn-primary btn-lg px-4 shadow-sm">Filter</button>
+                <button id="reset-button" class="btn btn-secondary btn-lg px-4 shadow-sm">Reset</button>
+            </div>
+        </div>
+    </div>
+    <!-- #endregion Filter Container -->
+
     <!-- #region Calendar Section -->
     <div class="container mt-5" id="calendar">
-        <h2 class="text-center">Event Calendar</h2>
+        <h2 class="text-center" id="calendar-header">Event Calendar</h2>
         <div class="row">
             <div class="col-12">
                 <div class="calendar-grid">
