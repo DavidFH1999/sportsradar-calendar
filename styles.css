@@ -42,7 +42,7 @@ body {
 }
 
 .calendar-grid div {
-    padding: 10px;
+    padding: 6px;
     text-align: center;
     border: 1px solid #ddd;
     border-radius: 5px;
